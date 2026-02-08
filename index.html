@@ -1,145 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coffee Shop</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>موعدي</title>
 
-<style>
-body{
-  margin:0;
-  font-family:system-ui;
-  background:#f5f3ef;
-  color:#333;
-}
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 
-section{
-  padding:70px 20px;
-  max-width:950px;
-  margin:auto;
-  text-align:center;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Cairo", sans-serif;
+    }
 
-.hero{
-  background:
-    linear-gradient(rgba(43,32,32,0.75), rgba(43,32,32,0.75)),
-    url("https://images.unsplash.com/photo-1509042239860-f550ce710b93");
-  background-size: cover;
-  background-position: center;
-  color:#fff;
-}
+    body {
+      background: linear-gradient(135deg, #eef3ff, #f9fbff);
+      direction: rtl;
+      color: #333;
+    }
 
-h1{font-size:32px;margin-bottom:15px}
-h2{font-size:26px;margin-bottom:25px}
-p{line-height:1.7}
+    /* ===== Header ===== */
+    header {
+      background: linear-gradient(135deg, #11744c, #159f68);
+      color: white;
+      padding: 60px 20px 80px;
+      text-align: center;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
 
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 26px;
-  background:#c89b6d;
-  color:#fff;
-  text-decoration:none;
-  border-radius:8px;
-  transition:.2s;
-}
-.btn:hover{background:#b5895f}
+    header h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
 
-/* grid for boxes */
-.grid{
-  display:grid;
-  gap:15px;
-}
+    header p {
+      opacity: 0.9;
+      font-size: 18px;
+    }
 
-/* individual boxes */
-.box{
-  padding:18px;
-  border-radius:12px;
-  color:#fff;
-  font-size:15px;
-}
+    /* ===== Container ===== */
+    .container {
+      max-width: 950px;
+      margin: -50px auto 40px;
+      padding: 30px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
 
-/* different brown shades */
-.b1{background:#a67c52;}
-.b2{background:#8b5e3c;}
-.b3{background:#c49a6c;}
-.b4{background:#6f4e37;}
+    h2 {
+      margin-bottom: 15px;
+      color: #11744c;
+      font-size: 22px;
+    }
 
-footer{
-  background:#1f1a17;
-  color:#bbb;
-  padding:35px 20px;
-  text-align:center;
-  font-size:14px;
-}
-</style>
+    /* ===== Services Cards ===== */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-bottom: 35px;
+    }
+
+    .service {
+      background: #f4f7ff;
+      padding: 25px 15px;
+      border-radius: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+      border: 1px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .service:hover::before {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+
+    .service:hover {
+      transform: translateY(-6px);
+      background: white;
+      border-color: #dbe6ff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .service span {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ===== Form ===== */
+    form {
+      display: grid;
+      gap: 15px;
+    }
+
+    input, select {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: #2b7cff;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(43,124,255,0.1);
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #11744c, #159f68);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(43,124,255,0.25);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      .container {
+        margin-top: -40px;
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <h1>Coffee That Feels Like You… Crafted with Passion, Served with Perfection</h1>
-  <p>From the very first sip, we take you on a rich flavor journey—carefully sourced beans, expertly roasted, and prepared to give you an unforgettable coffee experience.</p>
-  <a class="btn"> Order Your Coffee Now</a>
-</section>
+  <header>
+    <h1>موعدي</h1>
+    <p>احجز موعدك بسهولة وبدون انتظار</p>
+  </header>
 
-<!-- What Makes Our Coffee Different -->
-<section>
-  <h2>What Makes Our Coffee Different?</h2>
-  <div class="grid">
-    <div class="box b1"> Carefully selected beans from trusted farms</div>
-    <div class="box b2"> Fresh roasting that preserves true flavor</div>
-    <div class="box b3"> Varieties for every taste</div>
-    <div class="box b4"> Premium packaging that keeps every cup fresh</div>
+  <div class="container">
+
+    <h2>الخدمات المتاحة</h2>
+
+    <div class="services">
+      <div class="service"><span>💇🏻‍♂️</span>حلاقة شعر</div>
+      <div class="service"><span>🧖🏻‍♀️</span>تنظيف بشرة</div>
+      <div class="service"><span>🏋🏻‍♂️</span>جلسة تدريب</div>
+      <div class="service"><span>🩺</span>استشارة طبية</div>
+    </div>
+
+    <h2>احجز موعدك الآن</h2>
+
+    <form>
+      <input type="text" placeholder="الاسم الكامل" required>
+      <input type="tel" placeholder="رقم الجوال" required>
+
+      <select required>
+        <option value="">اختر الخدمة</option>
+        <option>حلاقة شعر</option>
+        <option>تنظيف بشرة</option>
+        <option>جلسة تدريب</option>
+        <option>استشارة طبية</option>
+      </select>
+
+      <input type="date" required>
+      <input type="time" required>
+
+      <button type="submit">تأكيد الحجز</button>
+    </form>
+
   </div>
-</section>
 
-<!-- Choose Your Favorite Flavor -->
-<section>
-  <h2>Choose Your Favorite Flavor</h2>
-  <p>We’ve gathered blends to match your mood at any moment.</p>
-  <div class="grid">
-    <div class="box b3">Specialty Coffee</div>
-    <div class="box b1">Arabic Coffee</div>
-    <div class="box b2">Espresso</div>
-    <div class="box b4">Signature Blends</div>
-  </div>
-  <a class="btn">Explore the Menu</a>
-</section>
-
-<!-- From Farm to Your Cup -->
-<section>
-  <h2>From Farm to Your Cup</h2>
-  <div class="grid">
-    <div class="box b2">1. Bean Selection</div>
-    <div class="box b3">2. Careful Roasting</div>
-    <div class="box b1">3. Quality Inspection</div>
-    <div class="box b4">4. Fast Delivery</div>
-  </div>
-</section>
-
-<section>
-  <h2>Start Your Coffee Journey Today</h2>
-  <p>Enjoy an exclusive discount on your first order.</p>
-  <a class="btn">Begin Your Coffee Experience </a>
-</section>
-
-<!-- Customer -->
-<section>
-  <h2>Loved by Coffee Enthusiasts </h2>
-  <div class="box" style="background:#fff;color:#333;">
-    “Absolutely the best coffee I’ve tasted! The balance and freshness are clear from the first cup.”
-    <br><br><strong>— Happy Customer</strong>
-  </div>
-</section>
-
-<footer>
-  Coffee is more than a drink… it’s a moment, a mood, and a story.
-  <br>
-  <br>
-Developed By Fatimah
-</footer>
+  <footer>
+    © 2026 موعدي
+  </footer>
 
 </body>
-
 </html>
